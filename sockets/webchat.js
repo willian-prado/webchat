@@ -3,24 +3,38 @@ const model = require('../models');
 
 const onlineUsers = [];
 
+const messageSocket = (io, socket) => {
+  socket.on('message', ({ chatMessage, nickname }) => {
+    const timestamp = moment().format('DD-MM-YYYY HH:mm:ss A');
+    const userMessage = `${timestamp} - ${nickname}: ${chatMessage}`;
+    io.emit('message', userMessage);
+    model.createMessage({ chatMessage, nickname, timestamp });
+  });
+};
+
+const updateNicknameSocket = (io, socket) => {
+  socket.on('updateNickname', (newNickname) => {
+    onlineUsers.forEach((user, index) => {
+      if (user.id === socket.id) onlineUsers[index].nickname = newNickname;
+    });
+    io.emit('connection', onlineUsers);
+  });
+};
+
 module.exports = (io) => {
   io.on('connection', (socket) => {
-    const user = {
-      randomName: socket.id.substring(0, 16),
+    const client = {
+      nickname: socket.id.substring(0, 16),
       id: socket.id,
     };
 
-    onlineUsers.push(user);
+    onlineUsers.push(client);
     console.log(`${socket.id} just arrived.`);
 
     io.emit('welcome', `${socket.id} just arrived.`);
     io.emit('connection', onlineUsers);
 
-    socket.on('message', ({ chatMessage, nickname }) => {
-      const timestamp = moment().format('DD-MM-YYYY HH:mm:ss A');
-      const userMessage = `${timestamp} - ${nickname}: ${chatMessage}`;
-      io.emit('message', userMessage);
-      model.createMessage({ chatMessage, nickname, timestamp });
-    });
+    messageSocket(io, socket);
+    updateNicknameSocket(io, socket);
   });
 };
