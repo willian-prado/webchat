@@ -7,11 +7,11 @@ module.exports = (io) => {
 
     io.emit('welcome', `${socket.id} just arrived.`);
 
-    socket.on('message', ({ message, nickname }) => {
+    socket.on('message', ({ chatMessage, nickname }) => {
       const timestamp = moment().format('DD-MM-YYYY HH:mm:ss A');
-      const userMessage = `${timestamp} - ${nickname}: ${message}`;
+      const userMessage = `${timestamp} - ${nickname}: ${chatMessage}`;
       io.emit('message', userMessage);
-      model.createMessage({ message, nickname, timestamp });
+      model.createMessage({ chatMessage, nickname, timestamp });
     });
   });
 };

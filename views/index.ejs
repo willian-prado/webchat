@@ -29,7 +29,9 @@
   <main>
     <section id="chat-container">
       <ul id="message-list">
-
+        <% formatMessages.forEach((message) => { %>
+          <li data-testid="message"> <%=message%> </li>
+        <% }) %>
       </ul>
     </section>
   </main>

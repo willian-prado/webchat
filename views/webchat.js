@@ -26,8 +26,8 @@ const inputMessage = document.querySelector('#message-box');
 
 messageForm.addEventListener('submit', (e) => {
   e.preventDefault();
-  const message = inputMessage.value;
-  socket.emit('message', { message, nickname });
+  const chatMessage = inputMessage.value;
+  socket.emit('message', { chatMessage, nickname });
   inputMessage.value = '';
   return false;
 });
