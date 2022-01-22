@@ -36,5 +36,12 @@ module.exports = (io) => {
 
     messageSocket(io, socket);
     updateNicknameSocket(io, socket);
+
+    socket.on('disconnect', () => {
+      onlineUsers.forEach(({ id }, index) => {
+        if (socket.id === id) onlineUsers.splice(index, 1);
+      });
+      io.emit('connection', onlineUsers);
+    });
   });
 };

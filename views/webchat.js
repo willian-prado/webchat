@@ -49,3 +49,7 @@ socket.on('message', (message) => createChatMessage(message));
 socket.on('connection', (onlineUsers) => {
   console.log(onlineUsers);
 });
+
+window.onbeforeunload = () => {
+  socket.disconnect();
+};
