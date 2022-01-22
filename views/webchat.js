@@ -45,3 +45,7 @@ socket.on('welcome', (_message) => {
 });
 
 socket.on('message', (message) => createChatMessage(message));
+
+socket.on('connection', (onlineUsers) => {
+  console.log(onlineUsers);
+});
