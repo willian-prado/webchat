@@ -8,6 +8,18 @@ const setClientNickname = (username) => {
   nickname = username;
 };
 
+const nicknameForm = document.querySelector('#form-nickname');
+const inputNickname = document.querySelector('#input-nickname');
+
+nicknameForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const newNickname = inputNickname.value;
+  setClientNickname(newNickname);
+  socket.emit('updateNickname', newNickname);
+  inputNickname.value = '';
+  return false;
+});
+
 const ulMessageList = document.querySelector('#message-list');
 const messageForm = document.querySelector('#message-form');
 const inputMessage = document.querySelector('#message-box');
