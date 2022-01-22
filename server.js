@@ -12,6 +12,8 @@ const io = require('socket.io')(httpServer, {
   },
 });
 
+require('./sockets/webchat')(io);
+
 app.set('view engine', 'ejs');
 app.set('views', './views');
 
