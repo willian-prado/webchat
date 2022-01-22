@@ -2,9 +2,11 @@ const socket = window.io();
 
 let nickname = '';
 const nicknameElement = document.querySelector('#user-nickname');
+const clientIdentification = document.querySelector('#client-id');
 
 const setClientNickname = (username) => {
   nicknameElement.innerText = username;
+  clientIdentification.innerText = username;
   nickname = username;
 };
 
@@ -20,7 +22,6 @@ nicknameForm.addEventListener('submit', (e) => {
   return false;
 });
 
-const ulMessageList = document.querySelector('#message-list');
 const messageForm = document.querySelector('#message-form');
 const inputMessage = document.querySelector('#message-box');
 
@@ -32,11 +33,26 @@ messageForm.addEventListener('submit', (e) => {
   return false;
 });
 
+const ulMessageList = document.querySelector('#message-list');
+
 const createChatMessage = (message) => {
   const li = document.createElement('li');
   li.innerText = message;
   li.setAttribute('data-testid', 'message');
   ulMessageList.appendChild(li);
+};
+
+const ulOnlineUsers = document.querySelector('#online-users');
+
+const createOnlineUserList = (onlineUsers) => {
+  onlineUsers.forEach((user) => {
+    if (user.id !== socket.id) {
+      const li = document.createElement('li');
+      li.innerText = user.nickname;
+      li.setAttribute('data-testid', 'online-user');
+      ulOnlineUsers.appendChild(li);
+    }
+  });
 };
 
 socket.on('welcome', (_message) => {
@@ -47,7 +63,8 @@ socket.on('welcome', (_message) => {
 socket.on('message', (message) => createChatMessage(message));
 
 socket.on('connection', (onlineUsers) => {
-  console.log(onlineUsers);
+  ulOnlineUsers.innerHTML = '';
+  createOnlineUserList(onlineUsers);
 });
 
 window.onbeforeunload = () => {

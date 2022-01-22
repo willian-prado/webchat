@@ -31,7 +31,7 @@ module.exports = (io) => {
     onlineUsers.push(client);
     console.log(`${socket.id} just arrived.`);
 
-    io.emit('welcome', `${socket.id} just arrived.`);
+    socket.emit('welcome', `${socket.id} just arrived.`);
     io.emit('connection', onlineUsers);
 
     messageSocket(io, socket);
