@@ -13,11 +13,12 @@ const io = require('socket.io')(httpServer, {
 });
 
 require('./sockets/webchat')(io);
+const controllers = require('./controllers');
 
 app.use(express.static(`${__dirname}/views`));
 app.set('view engine', 'ejs');
 app.set('views', './views');
 
-app.get('/', (req, res) => res.render('index'));
+app.get('/', controllers.getAllMessages);
 
 httpServer.listen(PORT, () => console.log(`Socket.io server is listening on PORT ${PORT}`));
