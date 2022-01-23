@@ -1,8 +1,8 @@
 const socket = window.io();
 
 let nickname = '';
-const nicknameElement = document.querySelector('#user-nickname');
-const clientIdentification = document.querySelector('#client-id');
+const nicknameElement = document.querySelector('.user-nickname');
+const clientIdentification = document.querySelector('.client-id');
 
 const setClientNickname = (username) => {
   nicknameElement.innerText = username;
@@ -10,20 +10,22 @@ const setClientNickname = (username) => {
   nickname = username;
 };
 
-const nicknameForm = document.querySelector('#form-nickname');
-const inputNickname = document.querySelector('#input-nickname');
+const nicknameForm = document.querySelector('.form-nickname');
+const inputNickname = document.querySelector('.input-nickname');
 
 nicknameForm.addEventListener('submit', (e) => {
   e.preventDefault();
   const newNickname = inputNickname.value;
-  setClientNickname(newNickname);
-  socket.emit('updateNickname', newNickname);
-  inputNickname.value = '';
+  if (newNickname) {
+    setClientNickname(newNickname);
+    socket.emit('updateNickname', newNickname);
+    inputNickname.value = '';
+  }
   return false;
 });
 
-const messageForm = document.querySelector('#message-form');
-const inputMessage = document.querySelector('#message-box');
+const messageForm = document.querySelector('.message-form');
+const inputMessage = document.querySelector('.message-box');
 
 messageForm.addEventListener('submit', (e) => {
   e.preventDefault();
@@ -33,7 +35,7 @@ messageForm.addEventListener('submit', (e) => {
   return false;
 });
 
-const ulMessageList = document.querySelector('#message-list');
+const ulMessageList = document.querySelector('.message-list');
 
 const createChatMessage = (message) => {
   const li = document.createElement('li');
@@ -42,7 +44,7 @@ const createChatMessage = (message) => {
   ulMessageList.appendChild(li);
 };
 
-const ulOnlineUsers = document.querySelector('#online-users');
+const ulOnlineUsers = document.querySelector('.online-users');
 
 const createOnlineUserList = (onlineUsers) => {
   onlineUsers.forEach((user) => {
