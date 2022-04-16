@@ -2,23 +2,33 @@
 
 > Décimo segundo projeto do módulo de Back-end do curso de desenvolvimento web da Trybe.
 
-### Objetivo do projeto
+**Contexto**
 
-Desenvolver um _chat_ online e ao utilizar essa aplicação um usuário deverá ser capaz de:
+No bloco desse projeto somos apresentados ao padrão arquitetural MVC (Model-View-Controller) utilizando EJS (Embedded JavaScript) como *template engine*. Esse projeto exemplifica uma aplicação que pode utilizar esse padrão e corresponde a um webchat construído com o pacote Socket.io. Essa ferramenta orientada a eventos permite a criação de aplicações em tempo-real, como aplicativos de mensagens instantâneas, streaming e colaboração em documentos.
+
+**Objetivo do projeto**
+
+Desenvolver uma aplicação Node.js de _chat_ online usando socket.io para emitir eventos e atualizar estado no servidor e cliente.
+O MVC será usado para renderizar as mensagens do histórico e usuários online, com ambos vindo direto do servidor.
+Ao utilizar essa aplicação um usuário deverá ser capaz de:
 
  - Usar um front-end para enviar mensagens a clientes conectados;
  - Visualizar o histórico de mensagens da conversa;
  - Visualizar os usuários online no momento;
  - Alterar o nome de usuário no chat em tempo real;
 
-### Principais habilidades desenvolvidas nesse trabalho:
-
+**Principais habilidades desenvolvidas nesse trabalho**
 
 - Conseguir desenvolver um server socket usando o socket.io;
-
 - Emitir eventos personalizados usando o socket.io;
-
 - Usar o pacote `socket.io` do Node.js para criar aplicações que trafeguem mensagens através de sockets.
+
+**Tecnologias utilizadas**
+- <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" title="JavaScript" align="center" height="30"/> - JavaScript</a>
+- <a href="https://nodejs.org"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original.svg" title="Node.js" align="center" height="35"/> - Node.js</a>
+- <a href="https://expressjs.com"><img src="https://images.tute.io/tute/topic/express-js.png" title= "Express" align="center" height="35"/> - Express</a>
+- <a href="https://www.mongodb.com/"><img src="https://www.svgrepo.com/show/331488/mongodb.svg" title="MongoDB" align="center" height="34"/> - MongoDB</a>
+- <a href="https://socket.io/"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Socket-io.svg/1200px-Socket-io.svg.png" title= "Socket.io" align="center" height="38"/> - Socket.io</a>
 
 ---
 
@@ -26,7 +36,7 @@ Desenvolver um _chat_ online e ao utilizar essa aplicação um usuário deverá 
 
 #### Obrigatórios
 
-### 1 - Crie um back-end para conexão simultânea de clientes e troca de mensagens em chat público.
+#### 1 - Crie um back-end para conexão simultânea de clientes e troca de mensagens em chat público.
 
 #### ⚠️ &nbsp; DICA: Para desenvolver esse requisito não é necessário se conectar ao banco de dados.
 
@@ -55,15 +65,7 @@ Desenvolver um _chat_ online e ao utilizar essa aplicação um usuário deverá 
 - Tanto o evento enviado do cliente para o servidor, como do servidor para o cliente deve ser **message**.
 
 
-#### As seguintes verificações serão feitas:
-```
-- Será validado que todos os clientes que estão conectados ao chat recebem as mensagens enviadas;
-
-- Será validado que toda mensagem que um cliente recebe contém as informações acerca de quem a enviou, data-hora do envio e o conteúdo da mensagem em si.
-```
----
-
-### 2 - Crie um frontend para que as pessoas interajam com o chat.
+#### 2 - Crie um frontend para que as pessoas interajam com o chat.
 
 #### ⚠️ &nbsp; DICA: Para desenvolver esse requisito não é necessário se conectar ao banco de dados.
 
@@ -88,24 +90,7 @@ Desenvolver um _chat_ online e ao utilizar essa aplicação um usuário deverá 
   - O botão que será clicado para salvar o _nickname_ deve conter `data-testid="nickname-button"`;
   - Ao salvar o _nickname_ ele deve ser atualizado para todos os clientes conectados.
 
-
-#### As seguintes verificações serão feitas:
-```
-- Será validado que um _nickname_ aleatório é gerado quando o cliente se conecta;
-
-- Será validado que o front-end tem uma caixa de texto para preencher e um botão para enviar mensagens;
-
-- Será validado que as mensagens enviadas possuem o _data-test-id_ correto;
-
-- Será validado que as mensagens são exibidas na ordem correta;
-
-- Será validado que o front-end tem um campo de texto para preencher e um botão para alterar o apelido _(nickname)_;
-
-- Será validado que é possível enviar mensagens após alterar o _nickname_.
-```
----
-
-### 3 - Elabore o histórico do chat para que as mensagens persistam.
+#### 3 - Elabore o histórico do chat para que as mensagens persistam.
 
 #### ⚠️ &nbsp; DICA: Para desenvolver esse requisito é estritamente necessário se conectar ao banco de dados.
 
@@ -128,17 +113,7 @@ Desenvolver um _chat_ online e ao utilizar essa aplicação um usuário deverá 
 
 - Envie o histórico de mensagens salvo no banco via `html` quando um novo cliente se conectar.
 
-#### As seguintes verificações serão feitas:
-```
-- Será validado que todo o histórico de mensagens irá aparecer quando o cliente se conectar;
-
-- Será validado que ao enviar uma mensagem e recarregar a página, a mensagem persistirá;
-
-- Será validado que ao alterar o _nickname_ e enviar uma mensagem, a mensagem persistirá;
-```
----
-
-### 4 - Informe a todos os clientes quem está online no momento.
+#### 4 - Informe a todos os clientes quem está online no momento.
 
 #### ⚠️ &nbsp; DICA: Para desenvolver esse requisito não é necessário se conectar ao banco de dados.
 
@@ -150,14 +125,3 @@ Desenvolver um _chat_ online e ao utilizar essa aplicação um usuário deverá 
   - A lista de clientes _online_ deve ser renderizada no `html` ao carregar a página;
   - Quando um cliente atualiza seu _nickname_ a lista de clientes deve ser atualizada para todos da mesma forma.
 
-
-#### As seguintes verificações serão feitas:
-```
-- Será validado que quando um cliente se conecta, seu _nickname_ aparece no front-end de todos;
-
-- Será validado que quando um cliente se desconecta, seu _nickname_ desaparece do front-end dos outros clientes;
-
-- Será validado que quando um cliente atualiza seu _nickname_, o nickname é atualizado no front-end de todos os clientes;
-
-- Será validado que os _nicknames_ são mostrados na ordem correta.
-```
