@@ -4,7 +4,7 @@
 
 **Contexto**
 
-No bloco desse projeto somos apresentados ao padrão arquitetural MVC (Model-View-Controller) utilizando EJS (Embedded JavaScript) como *template engine*. Esse projeto exemplifica uma aplicação que pode utilizar esse padrão e corresponde a um webchat construído com o pacote Socket.io. Essa ferramenta orientada a eventos permite a criação de aplicações em tempo-real, como aplicativos de mensagens instantâneas, streaming e colaboração em documentos.
+No bloco desse projeto somos apresentados ao padrão arquitetural MVC (Model-View-Controller) utilizando EJS (Embedded JavaScript) como *template engine*. Esse projeto exemplifica uma aplicação utilizando esse padrão e corresponde a um webchat construído com o pacote Socket.io. Essa ferramenta orientada a eventos permite a criação de aplicações em tempo-real, como aplicativos de mensagens instantâneas, streaming e colaboração em documentos.
 
 **Objetivo do projeto**
 
