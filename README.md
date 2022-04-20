@@ -1,6 +1,6 @@
 ## Projeto Webchat
 
-> Décimo segundo projeto do módulo de Back-end do curso de desenvolvimento web da Trybe.
+> Décimo segundo projeto do módulo de Back-end do curso de desenvolvimento web da [Trybe](https://www.betrybe.com/)
 
 **Contexto**
 
@@ -125,3 +125,6 @@ Ao utilizar essa aplicação um usuário deverá ser capaz de:
   - A lista de clientes _online_ deve ser renderizada no `html` ao carregar a página;
   - Quando um cliente atualiza seu _nickname_ a lista de clientes deve ser atualizada para todos da mesma forma.
 
+---
+
+[Ir para a lista de projetos](https://github.com/willian-prado/trybe-records)
